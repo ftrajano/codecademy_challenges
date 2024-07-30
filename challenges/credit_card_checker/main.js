@@ -1,5 +1,8 @@
+// All valid credit card numbers 7, 7, 9, 3, 5]
+
+// Add your functions below:
 // All valid credit card numbers
-const valid1 = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8]
+const valid1 = [4, 5, 3,  9,  6,  7,  7,  9,  0, 8,  0, 1, 6,  8,  0, 8]
 const valid2 = [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9]
 const valid3 = [3, 7, 1, 6, 1, 2, 0, 1, 9, 9, 8, 5, 2, 3, 6]
 const valid4 = [6, 0, 1, 1, 1, 4, 4, 3, 4, 0, 6, 8, 2, 9, 0, 5]
@@ -24,6 +27,41 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 // Add your functions below:
+
+function validateCred(card) {
+
+	let sum = 0;
+	let aux = []
+	// [4, 5, 3,  9,  6,  7,  7,  9,  0, 8,  0, 1, 6,  8,  0, 8] s=16-1 = 15 
+	// 
+    for(let i = card.length-1; i >=0;  i--) {
+		if(i%2==1){
+			if(card[i]*2>9){
+				aux.push(card[i]*2-9)
+			} else {
+				aux.push(card[i])
+			}
+		} else {
+			aux.push(card[i])
+		}
+    }
+	let total = aux.reduce(
+        (accumulator, currentValue) => accumulator + currentValue, sum);
+
+	total += card[card.length-1]
+	if(total%10 === 0){
+		return true;
+	} else {
+		return false;
+	}
+    
+}
+
+console.log(validateCred(invalid1));
+	
+
+
+
 
 
 
